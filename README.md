@@ -88,7 +88,7 @@ Shift KRS: F
 
 
 
-## Penjelasan Proses Passing Data
+## Penjelasan
 ### 1. Login
 Login adalah proses untuk memastikan bahwa hanya user yang sudah terdaftar dan memiliki data valid yang bisa masuk ke aplikasi.
 Ketika pengguna menekan tombol "Login", yang terjadi adalah:
