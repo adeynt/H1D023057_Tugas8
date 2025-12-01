@@ -48,11 +48,11 @@ Shift KRS: F
   <tr>
     <td align="center">
       <b>Tambah Produk</b><br><br>
-      <img src="https://github.com/user-attachments/assets/c850e656-376b-4429-87cc-c647a1848820" width="300">
+      <img src="https://github.com/user-attachments/assets/3c3e332e-718e-43ef-9170-83f787e6f94f" width="300">
     </td>
     <td align="center">
       <b>List Produk Setelah Ditambah</b><br><br>
-      <img src="https://github.com/user-attachments/assets/3c3e332e-718e-43ef-9170-83f787e6f94f" width="300">
+      <img src="https://github.com/user-attachments/assets/c850e656-376b-4429-87cc-c647a1848820" width="300">
     </td>
   </tr>
 
@@ -74,14 +74,14 @@ Shift KRS: F
     </td>
     <td align="center">
       <b>Hapus Produk</b><br><br>
-      <img src="https://github.com/user-attachments/assets/ef2eea19-db8f-438c-8166-7c530dbc370e" width="300">
+      <img src="https://github.com/user-attachments/assets/8ab179ee-4c41-4113-8f68-6d44ec76c80b" width="300">
     </td>
   </tr>
 
   <tr>
     <td align="center">
       <b>Logout</b><br><br>
-      <img src="https://github.com/user-attachments/assets/8ab179ee-4c41-4113-8f68-6d44ec76c80b" width="300">
+      <img src="https://github.com/user-attachments/assets/ef2eea19-db8f-438c-8166-7c530dbc370e" width="300">
     </td>
   </tr>
 </table>
