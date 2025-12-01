@@ -1,30 +1,50 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:tokokita/helpers/api.dart';
+import 'package:tokokita/helpers/api_url.dart';
 import 'package:tokokita/model/produk.dart';
-
 class ProdukBloc {
-  static const String baseUrl = "http://toko_api.test/produk";
-
-  // GET List Produk
-  static Future<List<Produk>> getProduk() async {
-    final response = await http.get(Uri.parse(baseUrl));
-
-    if (response.statusCode == 200) {
-      List jsonResponse = json.decode(response.body)['data'];
-      return jsonResponse.map((p) => Produk.fromJson(p)).toList();
-    } else {
-      throw Exception("Gagal load produk");
+  static Future<List<Produk>> getProduks() async {
+    String apiUrl = ApiUrl.listProduk;
+    var response = await Api().get(apiUrl);
+    var jsonObj = json.decode(response.body);
+    List<dynamic> listProduk = (jsonObj as Map<String, dynamic>)['data'];
+    List<Produk> produks = [];
+    for (int i = 0; i < listProduk.length; i++) {
+      produks.add(Produk.fromJson(listProduk[i]));
     }
+    return produks;
   }
 
-  // DELETE Produk
-  static Future<bool> deleteProduk({required int id}) async {
-    final response = await http.delete(Uri.parse("$baseUrl/$id"));
-
-    if (response.statusCode == 200) {
-      return true;
-    } else {
-      throw Exception("Gagal menghapus produk");
-    }
+  static Future addProduk({Produk? produk}) async {
+    String apiUrl = ApiUrl.createProduk;
+    var body = {
+      "kode_produk": produk!.kodeProduk,
+      "nama_produk": produk.namaProduk,
+      "harga": produk.hargaProduk.toString()
+    };
+    var response = await Api().post(apiUrl, body);
+    var jsonObj = json.decode(response.body);
+    return jsonObj['status'];
   }
+
+  static Future updateProduk({required Produk produk}) async {
+    String apiUrl = ApiUrl.updateProduk(int.parse(produk.id!));
+    print(apiUrl);
+    var body = {
+      "kode_produk": produk.kodeProduk,
+      "nama_produk": produk.namaProduk,
+      "harga": produk.hargaProduk.toString()
+    };
+    print("Body : $body");
+    var response = await Api().put(apiUrl, jsonEncode(body));
+    var jsonObj = json.decode(response.body);
+    return jsonObj['status'];
+  }
+
+  static Future<bool> deleteProduk({int? id}) async {
+    String apiUrl = ApiUrl.deleteProduk(id!);
+    var response = await Api().delete(apiUrl);
+    var jsonObj = json.decode(response.body);
+    return (jsonObj as Map<String, dynamic>)['data'];
+    }
 }
